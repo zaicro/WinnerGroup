@@ -6,7 +6,6 @@
 *.pdb
 *.zip
 *.gz
-*.sql
 
 # Visual Studio
 .vs/
