@@ -1,0 +1,25 @@
+# .NET Core
+*.obj
+*.exe
+#*.dll
+*.log
+*.pdb
+*.zip
+*.gz
+*.sql
+
+# Visual Studio
+.vs/
+
+# Visual Studio Code
+.vscode/
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Bb]in/
+[Oo]bj/
