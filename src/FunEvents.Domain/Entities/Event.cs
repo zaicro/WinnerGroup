@@ -20,8 +20,8 @@ public class Event
         if (string.IsNullOrWhiteSpace(name))
             throw new ArgumentException("Event name is required.", nameof(name));
 
-        if (eventDate <= DateTime.UtcNow)
-            throw new ArgumentException("Event date must be in the future.", nameof(eventDate));
+        //if (eventDate <= DateTime.UtcNow)
+        //    throw new ArgumentException("Event date must be in the future.", nameof(eventDate));
 
         if (capacity <= 0)
             throw new ArgumentException("Event capacity must be greater than zero.", nameof(capacity));

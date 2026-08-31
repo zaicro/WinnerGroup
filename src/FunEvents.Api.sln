@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunEvents.Logging.Tests", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunEvents.ConsoleApp", "FunEvents.Console\FunEvents.ConsoleApp.csproj", "{9952ED05-45EA-4CF6-AC4C-7A6E7CBC24F5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunEvents.Api.Tests", "FunEvents.Api.Tests\FunEvents.Api.Tests.csproj", "{7F42723C-C858-4089-AE22-B8711E216739}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,6 +75,10 @@ Global
 		{9952ED05-45EA-4CF6-AC4C-7A6E7CBC24F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9952ED05-45EA-4CF6-AC4C-7A6E7CBC24F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9952ED05-45EA-4CF6-AC4C-7A6E7CBC24F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F42723C-C858-4089-AE22-B8711E216739}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F42723C-C858-4089-AE22-B8711E216739}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F42723C-C858-4089-AE22-B8711E216739}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F42723C-C858-4089-AE22-B8711E216739}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -87,6 +93,7 @@ Global
 		{C604AC37-79F7-4AC8-832F-7B7DABCBE46F} = {E0096E9F-9996-4D7C-A4C2-5F6313B65657}
 		{2F31C320-E453-4E59-BCA0-9AE3F52B4514} = {E0096E9F-9996-4D7C-A4C2-5F6313B65657}
 		{9952ED05-45EA-4CF6-AC4C-7A6E7CBC24F5} = {BEB39C8F-082B-4282-92E9-27A4731E76A5}
+		{7F42723C-C858-4089-AE22-B8711E216739} = {BEB39C8F-082B-4282-92E9-27A4731E76A5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {82032686-4DEE-4E93-AE85-FB62D5675CE8}

@@ -4,7 +4,7 @@ using FunEvents.Domain.Repositories;
 
 namespace FunEvents.Application.Features.Event.Services.Impl;
 
-internal sealed class CreateEventService(IUnitOfWork unitOfWork, IEventRepository eventRepository, ILogger logger) : ICreateEventService
+public sealed class CreateEventService(IUnitOfWork unitOfWork, IEventRepository eventRepository, ILogger logger) : ICreateEventService
 {
     private readonly IUnitOfWork _unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
     private readonly IEventRepository _eventRepository = eventRepository ?? throw new ArgumentNullException(nameof(eventRepository));

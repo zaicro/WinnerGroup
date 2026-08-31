@@ -20,6 +20,7 @@
     <ProjectReference Include="..\FunEvents.Application\FunEvents.Application.csproj" />
     <ProjectReference Include="..\FunEvents.Domain\FunEvents.Domain.csproj" />
     <ProjectReference Include="..\FunEvents.Infrastructure.Sql\FunEvents.Infrastructure.Sql.csproj" />
+    <ProjectReference Include="..\FunEvents.Logging\FunEvents.Logging.csproj" />
   </ItemGroup>
 
 </Project>
