@@ -11,7 +11,7 @@ public class ReservationController(IMediator mediator) : BaseApiController(media
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> CreateAsync([FromBody] CreateReservationCommand command)
+    public async Task<IActionResult> CreateAsync([FromBody] CreateReservationCommand command, [FromHeader(Name = "Idempotency-Key")] string idempotencyKey)
     {
         return Ok(await Mediator.Send(command));
     }

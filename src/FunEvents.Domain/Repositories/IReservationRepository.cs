@@ -2,7 +2,7 @@
 
 public interface IReservationRepository
 {
-    Task AddAsync(Reservation reservation, CancellationToken cancellationToken = default);
+    Task AddAsync(Reservation reservation, string idempotencyKey, CancellationToken cancellationToken = default);
 
     Task<bool> ExistsAsync(string reservationCode, CancellationToken cancellationToken = default);
 

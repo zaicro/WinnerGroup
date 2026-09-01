@@ -15,7 +15,7 @@ internal sealed class CreateReservationService(IUnitOfWork unitOfWork,
     private readonly IUserRepository _userRepository = userRepository ?? throw new ArgumentNullException(nameof(userRepository));
     private readonly ILogger _logger = logger ?? throw new ArgumentNullException(nameof(logger));
 
-    public async Task<ReservationDto> CreateReservationAsync(CreateReservationCommand request, CancellationToken cancellationToken)
+    public async Task<ReservationDto> CreateReservationAsync(CreateReservationCommand request, string idempotencyKey, CancellationToken cancellationToken)
     {
         var method = MethodBase.GetCurrentMethod();
         
@@ -44,7 +44,7 @@ internal sealed class CreateReservationService(IUnitOfWork unitOfWork,
 
             await EnsureReservationDoesNotExistAsync(newRecord, cancellationToken);
 
-            await _reservationRepository.AddAsync(newRecord, cancellationToken);
+            await _reservationRepository.AddAsync(newRecord, idempotencyKey, cancellationToken);
 
             await _unitOfWork.CommitAsync(cancellationToken);
 

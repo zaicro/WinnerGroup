@@ -5,5 +5,5 @@ namespace FunEvents.Application.Features.Reservation.Services;
 
 public interface ICreateReservationService
 {
-    Task<ReservationDto> CreateReservationAsync(CreateReservationCommand request, CancellationToken cancellationToken);
+    Task<ReservationDto> CreateReservationAsync(CreateReservationCommand request, string idempotencyKey, CancellationToken cancellationToken);
 }

@@ -4,8 +4,23 @@ namespace FunEvents.Infrastructure.Sql.Repositories;
 
 internal sealed class ReservationRepository(FunEventsDbContext context) : IReservationRepository
 {
-    public async Task AddAsync(Reservation reservation, CancellationToken cancellationToken = default)
+    public async Task AddAsync(Reservation reservation, string idempotencyKey, CancellationToken cancellationToken = default)
     {
+        var isExistiIdempotency = await context.Set<TbIdempotency>().AnyAsync(x => x.Key == idempotencyKey);
+
+        if (isExistiIdempotency)
+            throw new InvalidOperationException("This operation has already been performed.");
+
+        var idempotency = new TbIdempotency
+        {
+            Key = idempotencyKey,
+            TableName = nameof(TbReservation),
+            TableKeyValue = 0
+        };
+
+        await context.Set<TbIdempotency>()
+            .AddAsync(idempotency, cancellationToken);
+
         var affectedRows = await context.Set<TbEvent>()
             .Where(e => e.Id == reservation.EventId && e.AvailableCapacity >= reservation.Quantity)
             .ExecuteUpdateAsync(setters => setters

@@ -1,4 +1,5 @@
 ﻿using FunEvents.Application;
+using FunEvents.Application.Contracts;
 using FunEvents.Infrastructure.Sql;
 using FunEvents.Logging;
 
@@ -18,6 +19,9 @@ internal static class DependencyInjection
         services.AddInfraestructureSQL(configuration.GetConnectionString("DefaultConnection"));
 
         services.AddApplication();
+
+        services.AddHttpContextAccessor();
+        services.AddScoped<IIdempotencyKeyProvider, HttpIdempotencyKeyProvider>();
 
         return services;
     }
