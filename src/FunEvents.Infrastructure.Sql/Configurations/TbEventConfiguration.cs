@@ -40,11 +40,17 @@ internal sealed class TbEventConfiguration : IEntityTypeConfiguration<TbEvent>
             .IsRequired()
             .HasColumnOrder(4);
 
+        builder.Property(x => x.AvailableCapacity)
+            .HasColumnName("availableCapacity")
+            .HasColumnType("int")
+            .IsRequired()
+            .HasColumnOrder(5);
+
         builder.Property(x => x.Status)
             .HasColumnName("status")
             .HasColumnType("int")
             .IsRequired()
-            .HasColumnOrder(5);
+            .HasColumnOrder(6);
 
         builder.HasMany(x => x.Reservations)
             .WithOne(x => x.Event)

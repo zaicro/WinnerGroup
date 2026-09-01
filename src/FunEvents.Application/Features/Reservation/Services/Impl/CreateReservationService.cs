@@ -3,7 +3,7 @@ using FunEvents.Application.Features.Reservation.Models.DTOs;
 
 namespace FunEvents.Application.Features.Reservation.Services.Impl;
 
-internal sealed class CreateReservationService(IUnitOfWork unitOfWork, 
+internal sealed class CreateReservationService(IUnitOfWork unitOfWork,
     IReservationRepository reservationRepository,
     IEventRepository eventRepository,
     IUserRepository userRepository,
@@ -18,10 +18,12 @@ internal sealed class CreateReservationService(IUnitOfWork unitOfWork,
     public async Task<ReservationDto> CreateReservationAsync(CreateReservationCommand request, CancellationToken cancellationToken)
     {
         var method = MethodBase.GetCurrentMethod();
-
+        
         try
         {
             _logger.Info(method!, "Start");
+
+            await _unitOfWork.BeginTransactionAsync(cancellationToken);
 
             var user = await _userRepository.GetByUsernameAsync(request.UserName, cancellationToken);
             var @event = await _eventRepository.GetByCodeAsync(request.EventCode, cancellationToken);
@@ -29,6 +31,8 @@ internal sealed class CreateReservationService(IUnitOfWork unitOfWork,
             if (user == null) throw new ArgumentException("UserName is not already registered.", nameof(request.UserName));
 
             if (@event == null) throw new ArgumentException("Event is not already registered.", nameof(request.EventCode));
+
+            if (request.Quantity <= 0) throw new ArgumentException("Quantity must be greater than zero.", nameof(request.Quantity));
 
             var newRecord = new Domain.Entities.Reservation(
                 request.Code,

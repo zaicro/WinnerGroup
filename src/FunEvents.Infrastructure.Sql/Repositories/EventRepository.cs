@@ -10,6 +10,7 @@ internal sealed class EventRepository(FunEventsDbContext context) : IEventReposi
             Name = @event.Name,
             EventDate = @event.EventDate,
             Capacity = @event.Capacity,
+            AvailableCapacity = @event.AvailableCapacity,
             Status = 1
         };
 
@@ -75,6 +76,7 @@ internal sealed class EventRepository(FunEventsDbContext context) : IEventReposi
             table.Code,
             table.Name,
             table.EventDate,
-            table.Capacity);
+            table.Capacity,
+            table.AvailableCapacity);
     }
 }

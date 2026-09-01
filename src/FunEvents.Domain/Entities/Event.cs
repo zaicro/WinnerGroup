@@ -12,6 +12,7 @@ public class Event
         string name,
         DateTime eventDate,
         int capacity,
+        int availableCapacity,
         EventStatus status = EventStatus.Draft)
     {
         if (string.IsNullOrWhiteSpace(code))
@@ -31,6 +32,7 @@ public class Event
         Name = name;
         EventDate = eventDate;
         Capacity = capacity;
+        AvailableCapacity = availableCapacity;
         Status = status;
     }
 
@@ -43,6 +45,8 @@ public class Event
     public DateTime EventDate { get; set; }
 
     public int Capacity { get; set; }
+
+    public int AvailableCapacity { get; set; }
 
     public EventStatus Status { get; set; }
 

@@ -13,7 +13,7 @@ internal sealed class FunEventsDbContextFactory : IDesignTimeDbContextFactory<Fu
 
             optionsBuilder.UseSqlServer(
                 "Server=DESKTOP-T0SDTHB;" +
-                "Initial Catalog=FunEvents;" +
+                "Initial Catalog=FunEventsV1;" +
                 "Integrated Security=True;" +
                 "TrustServerCertificate=True;");
 

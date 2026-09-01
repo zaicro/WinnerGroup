@@ -1,9 +1,21 @@
-﻿namespace FunEvents.Infrastructure.Sql.Repositories;
+﻿using Azure.Core;
+
+namespace FunEvents.Infrastructure.Sql.Repositories;
 
 internal sealed class ReservationRepository(FunEventsDbContext context) : IReservationRepository
 {
     public async Task AddAsync(Reservation reservation, CancellationToken cancellationToken = default)
     {
+        var affectedRows = await context.Set<TbEvent>()
+            .Where(e => e.Id == reservation.EventId && e.AvailableCapacity >= reservation.Quantity)
+            .ExecuteUpdateAsync(setters => setters
+            .SetProperty(
+                e => e.AvailableCapacity,
+                e => e.AvailableCapacity - reservation.Quantity
+                ));
+
+        if (affectedRows == 0) throw new InvalidOperationException("There is not enough available capacity.");
+
         var table = new TbReservation
         {
             ReservationCode = reservation.ReservationCode,

@@ -34,6 +34,13 @@ public sealed class ExceptionHandlingMiddleware
                 HttpStatusCode.NotFound,
                 ex.Message);
         }
+        catch (InvalidOperationException ex)
+        {
+            await HandleExceptionAsync(
+                context,
+                HttpStatusCode.Conflict,
+                ex.Message);
+        }
         catch (Exception)
         {
             await HandleExceptionAsync(

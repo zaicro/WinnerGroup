@@ -5,6 +5,15 @@ internal sealed class UnitOfWork(FunEventsDbContext context) : IUnitOfWork
     private readonly FunEventsDbContext _context = context ?? throw new ArgumentNullException(nameof(context));
     private IDbContextTransaction? _transaction;
 
+    public async Task BeginTransactionAsync(CancellationToken cancellationToken = default)
+    {
+        if (_transaction == null)
+        {
+            _transaction = await _context.Database
+                .BeginTransactionAsync(cancellationToken);
+        }
+    }
+
     public async Task<int> CommitAsync(CancellationToken cancellationToken = default)
     {
         _transaction ??= await _context.Database.BeginTransactionAsync(cancellationToken);

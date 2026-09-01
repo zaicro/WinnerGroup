@@ -24,6 +24,7 @@ public sealed class CreateEventService(IUnitOfWork unitOfWork, IEventRepository 
                 request.Name,
                 request.EventDate,
                 request.Capacity,
+                request.Capacity,
                 Domain.Enums.EventStatus.Draft
                 );
 

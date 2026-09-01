@@ -12,6 +12,8 @@ internal class TbEvent : AuditableTable
 
     public int Capacity { get; set; }
 
+    public int AvailableCapacity { get; set; }
+
     public int Status { get; set; }
 
     public ICollection<TbReservation> Reservations { get; private set; } = [];
