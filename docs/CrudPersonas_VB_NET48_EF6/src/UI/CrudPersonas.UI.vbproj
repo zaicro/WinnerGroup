@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <RootNamespace>CrudPersonas.UI</RootNamespace>
+    <AssemblyName>CrudPersonas.UI</AssemblyName>
+    <OptionStrict>On</OptionStrict>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionInfer>On</OptionInfer>
+    <LangVersion>latest</LangVersion>
+    <OutputType>WinExe</OutputType>
+    <UseWindowsForms>true</UseWindowsForms>
+    <StartupObject>CrudPersonas.UI.Program</StartupObject>
+    <MyType>WindowsFormsWithCustomSubMain</MyType>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Application\CrudPersonas.Application.vbproj" />
+    <ProjectReference Include="..\DataAccess\CrudPersonas.DataAccess.vbproj" />
+    <PackageReference Include="EntityFramework" Version="6.5.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="MainForm.vb"><SubType>Form</SubType></Compile>
+    <Compile Update="MainForm.Designer.vb"><DependentUpon>MainForm.vb</DependentUpon></Compile>
+  </ItemGroup>
+</Project>

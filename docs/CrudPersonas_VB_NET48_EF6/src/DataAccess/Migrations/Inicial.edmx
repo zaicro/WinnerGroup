@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Edmx Version="3.0" xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <Runtime>
+  <ConceptualModels>
+   <Schema Namespace="CodeFirstNamespace" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+    <EntityType Name="Persona"><Key><PropertyRef Name="Id" /></Key><Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" /><Property Name="Nombre" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" /></EntityType>
+    <EntityContainer Name="CodeFirstContainer"><EntitySet Name="Personas" EntityType="Self.Persona" /></EntityContainer>
+   </Schema>
+  </ConceptualModels>
+  <Mappings>
+   <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs"><EntityContainerMapping StorageEntityContainer="CodeFirstDatabase" CdmEntityContainer="CodeFirstContainer"><EntitySetMapping Name="Personas"><EntityTypeMapping TypeName="CodeFirstNamespace.Persona"><MappingFragment StoreEntitySet="Persona"><ScalarProperty Name="Id" ColumnName="Id" /><ScalarProperty Name="Nombre" ColumnName="Nombre" /></MappingFragment></EntityTypeMapping></EntitySetMapping></EntityContainerMapping></Mapping>
+  </Mappings>
+  <StorageModels>
+   <Schema Namespace="CodeFirstDatabaseSchema" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <EntityType Name="Persona"><Key><PropertyRef Name="Id" /></Key><Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" /><Property Name="Nombre" Type="nvarchar" MaxLength="150" Nullable="false" /></EntityType>
+    <EntityContainer Name="CodeFirstDatabase"><EntitySet Name="Persona" EntityType="Self.Persona" Schema="dbo" Table="Personas" store:Type="Tables" /></EntityContainer>
+   </Schema>
+  </StorageModels>
+ </Runtime>
+</Edmx>

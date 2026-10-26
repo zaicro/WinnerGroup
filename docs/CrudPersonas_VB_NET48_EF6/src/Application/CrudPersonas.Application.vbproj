@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <RootNamespace>CrudPersonas.Application</RootNamespace>
+    <AssemblyName>CrudPersonas.Application</AssemblyName>
+    <OptionStrict>On</OptionStrict>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionInfer>On</OptionInfer>
+    <LangVersion>latest</LangVersion>
+    
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\CrudPersonas.Domain.vbproj" />
+  </ItemGroup>
+</Project>

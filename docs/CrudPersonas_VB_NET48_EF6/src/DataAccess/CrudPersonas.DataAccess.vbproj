@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <RootNamespace>CrudPersonas.DataAccess</RootNamespace>
+    <AssemblyName>CrudPersonas.DataAccess</AssemblyName>
+    <OptionStrict>On</OptionStrict>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionInfer>On</OptionInfer>
+    <LangVersion>latest</LangVersion>
+    
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\CrudPersonas.Domain.vbproj" />
+    <ProjectReference Include="..\Application\CrudPersonas.Application.vbproj" />
+    <PackageReference Include="EntityFramework" Version="6.5.2" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+</Project>

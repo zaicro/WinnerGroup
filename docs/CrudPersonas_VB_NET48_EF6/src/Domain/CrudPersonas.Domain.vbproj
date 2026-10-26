@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <RootNamespace>CrudPersonas.Domain</RootNamespace>
+    <AssemblyName>CrudPersonas.Domain</AssemblyName>
+    <OptionStrict>On</OptionStrict>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionInfer>On</OptionInfer>
+    <LangVersion>latest</LangVersion>
+    
+  </PropertyGroup>
+  <ItemGroup>
+
+  </ItemGroup>
+</Project>
