@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace />
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataAccess.Ef6\TableGamesAuth.DataAccess.Ef6.vbproj" />
+  </ItemGroup>
+</Project>

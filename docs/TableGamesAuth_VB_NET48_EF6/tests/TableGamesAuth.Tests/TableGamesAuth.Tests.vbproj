@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace />
+  </PropertyGroup>
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../src/Logging/TableGamesAuth.Logging.vbproj" />
+    <ProjectReference Include="../../src/Application/TableGamesAuth.Application.vbproj" />
+    <ProjectReference Include="../../src/Security/TableGamesAuth.Security.vbproj" />
+  </ItemGroup>
+</Project>

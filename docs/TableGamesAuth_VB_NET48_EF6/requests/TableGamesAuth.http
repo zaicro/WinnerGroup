@@ -1,0 +1,52 @@
+@baseUrl = http://localhost:9000
+@apiKey = REEMPLAZAR_API_KEY
+@token = REEMPLAZAR_JWT
+@appId = 20000000-0000-0000-0000-000000000001
+
+### Login (copiar accessToken)
+POST {{baseUrl}}/api/v1/auth/login
+X-Api-Key: {{apiKey}}
+Content-Type: application/json
+
+{"userName":"admin","password":"REEMPLAZAR_CONTRASENA","appId":"{{appId}}"}
+
+### Sesión actual
+GET {{baseUrl}}/api/v1/auth/me
+X-Api-Key: {{apiKey}}
+Authorization: Bearer {{token}}
+
+### Roles
+GET {{baseUrl}}/api/v1/roles?skip=0&take=25
+X-Api-Key: {{apiKey}}
+Authorization: Bearer {{token}}
+
+### Crear rol
+POST {{baseUrl}}/api/v1/roles
+X-Api-Key: {{apiKey}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{"name":"Supervisor"}
+
+### Crear usuario (rol Operator de la semilla)
+POST {{baseUrl}}/api/v1/users
+X-Api-Key: {{apiKey}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{"userName":"operador1","password":"REEMPLAZAR-CONTRASENA-LARGA","roleId":"10000000-0000-0000-0000-000000000002","isActive":true}
+
+### Asignar Roulette (reemplazar userId)
+POST {{baseUrl}}/api/v1/user-apps
+X-Api-Key: {{apiKey}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{"userId":"REEMPLAZAR_USER_ID","appId":"20000000-0000-0000-0000-000000000002"}
+
+### Consultar aplicaciones
+GET {{baseUrl}}/api/v1/apps
+X-Api-Key: {{apiKey}}
+Authorization: Bearer {{token}}
+
+### PUT requiere la version devuelta por GET. DELETE usa ?version=GUID.

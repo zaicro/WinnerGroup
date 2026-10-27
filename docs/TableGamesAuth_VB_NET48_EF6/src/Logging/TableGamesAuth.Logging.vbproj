@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace />
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../Application/TableGamesAuth.Application.vbproj" />
+    <PackageReference Include="log4net" Version="3.5.0" />
+  </ItemGroup>
+</Project>

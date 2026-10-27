@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace />
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\TableGamesAuth.Domain.vbproj" />
+    <ProjectReference Include="..\Application\TableGamesAuth.Application.vbproj" />
+    <PackageReference Include="EntityFramework" Version="6.5.2" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.IO.Compression" />
+  </ItemGroup>
+</Project>

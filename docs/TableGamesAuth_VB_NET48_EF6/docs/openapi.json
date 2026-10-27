@@ -1,0 +1,1431 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "TableGamesAuth API",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://localhost:9443"
+    }
+  ],
+  "security": [
+    {
+      "ApiKey": [],
+      "Bearer": []
+    }
+  ],
+  "paths": {
+    "/api/v1/users": {
+      "get": {
+        "tags": [
+          "users"
+        ],
+        "summary": "Listar (SystemAdmin)",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "skip",
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 1000000,
+              "default": 0
+            }
+          },
+          {
+            "in": "query",
+            "name": "take",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 25
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Entrada inválida"
+          },
+          "401": {
+            "description": "Credenciales inválidas"
+          },
+          "403": {
+            "description": "Requiere SystemAdmin"
+          },
+          "404": {
+            "description": "No encontrado"
+          },
+          "409": {
+            "description": "Conflicto o restricción"
+          },
+          "413": {
+            "description": "Cuerpo demasiado grande"
+          },
+          "429": {
+            "description": "Límite de peticiones"
+          },
+          "500": {
+            "description": "Error interno"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "users"
+        ],
+        "summary": "Crear (SystemAdmin)",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Entrada inválida"
+          },
+          "401": {
+            "description": "Credenciales inválidas"
+          },
+          "403": {
+            "description": "Requiere SystemAdmin"
+          },
+          "404": {
+            "description": "No encontrado"
+          },
+          "409": {
+            "description": "Conflicto o restricción"
+          },
+          "413": {
+            "description": "Cuerpo demasiado grande"
+          },
+          "429": {
+            "description": "Límite de peticiones"
+          },
+          "500": {
+            "description": "Error interno"
+          }
+        }
+      }
+    },
+    "/api/v1/users/{id}": {
+      "parameters": [
+        {
+          "in": "path",
+          "name": "id",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      ],
+      "get": {
+        "tags": [
+          "users"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Entrada inválida"
+          },
+          "401": {
+            "description": "Credenciales inválidas"
+          },
+          "403": {
+            "description": "Requiere SystemAdmin"
+          },
+          "404": {
+            "description": "No encontrado"
+          },
+          "409": {
+            "description": "Conflicto o restricción"
+          },
+          "413": {
+            "description": "Cuerpo demasiado grande"
+          },
+          "429": {
+            "description": "Límite de peticiones"
+          },
+          "500": {
+            "description": "Error interno"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "users"
+        ],
+        "description": "Envíe version del GET anterior. Actualización completa salvo Password/PasswordHash opcionales.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Entrada inválida"
+          },
+          "401": {
+            "description": "Credenciales inválidas"
+          },
+          "403": {
+            "description": "Requiere SystemAdmin"
+          },
+          "404": {
+            "description": "No encontrado"
+          },
+          "409": {
+            "description": "Conflicto o restricción"
+          },
+          "413": {
+            "description": "Cuerpo demasiado grande"
+          },
+          "429": {
+            "description": "Límite de peticiones"
+          },
+          "500": {
+            "description": "Error interno"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "users"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "version",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Entrada inválida"
+          },
+          "401": {
+            "description": "Credenciales inválidas"
+          },
+          "403": {
+            "description": "Requiere SystemAdmin"
+          },
+          "404": {
+            "description": "No encontrado"
+          },
+          "409": {
+            "description": "Conflicto o restricción"
+          },
+          "413": {
+            "description": "Cuerpo demasiado grande"
+          },
+          "429": {
+            "description": "Límite de peticiones"
+          },
+          "500": {
+            "description": "Error interno"
+          }
+        }
+      }
+    },
+    "/api/v1/roles": {
+      "get": {
+        "tags": [
+          "roles"
+        ],
+        "summary": "Listar (SystemAdmin)",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "skip",
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 1000000,
+              "default": 0
+            }
+          },
+          {
+            "in": "query",
+            "name": "take",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 25
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Role"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Entrada inválida"
+          },
+          "401": {
+            "description": "Credenciales inválidas"
+          },
+          "403": {
+            "description": "Requiere SystemAdmin"
+          },
+          "404": {
+            "description": "No encontrado"
+          },
+          "409": {
+            "description": "Conflicto o restricción"
+          },
+          "413": {
+            "description": "Cuerpo demasiado grande"
+          },
+          "429": {
+            "description": "Límite de peticiones"
+          },
+          "500": {
+            "description": "Error interno"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "roles"
+        ],
+        "summary": "Crear (SystemAdmin)",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoleInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Role"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Entrada inválida"
+          },
+          "401": {
+            "description": "Credenciales inválidas"
+          },
+          "403": {
+            "description": "Requiere SystemAdmin"
+          },
+          "404": {
+            "description": "No encontrado"
+          },
+          "409": {
+            "description": "Conflicto o restricción"
+          },
+          "413": {
+            "description": "Cuerpo demasiado grande"
+          },
+          "429": {
+            "description": "Límite de peticiones"
+          },
+          "500": {
+            "description": "Error interno"
+          }
+        }
+      }
+    },
+    "/api/v1/roles/{id}": {
+      "parameters": [
+        {
+          "in": "path",
+          "name": "id",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      ],
+      "get": {
+        "tags": [
+          "roles"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Role"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Entrada inválida"
+          },
+          "401": {
+            "description": "Credenciales inválidas"
+          },
+          "403": {
+            "description": "Requiere SystemAdmin"
+          },
+          "404": {
+            "description": "No encontrado"
+          },
+          "409": {
+            "description": "Conflicto o restricción"
+          },
+          "413": {
+            "description": "Cuerpo demasiado grande"
+          },
+          "429": {
+            "description": "Límite de peticiones"
+          },
+          "500": {
+            "description": "Error interno"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "roles"
+        ],
+        "description": "Envíe version del GET anterior. Actualización completa salvo Password/PasswordHash opcionales.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoleInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Role"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Entrada inválida"
+          },
+          "401": {
+            "description": "Credenciales inválidas"
+          },
+          "403": {
+            "description": "Requiere SystemAdmin"
+          },
+          "404": {
+            "description": "No encontrado"
+          },
+          "409": {
+            "description": "Conflicto o restricción"
+          },
+          "413": {
+            "description": "Cuerpo demasiado grande"
+          },
+          "429": {
+            "description": "Límite de peticiones"
+          },
+          "500": {
+            "description": "Error interno"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "roles"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "version",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Entrada inválida"
+          },
+          "401": {
+            "description": "Credenciales inválidas"
+          },
+          "403": {
+            "description": "Requiere SystemAdmin"
+          },
+          "404": {
+            "description": "No encontrado"
+          },
+          "409": {
+            "description": "Conflicto o restricción"
+          },
+          "413": {
+            "description": "Cuerpo demasiado grande"
+          },
+          "429": {
+            "description": "Límite de peticiones"
+          },
+          "500": {
+            "description": "Error interno"
+          }
+        }
+      }
+    },
+    "/api/v1/apps": {
+      "get": {
+        "tags": [
+          "apps"
+        ],
+        "summary": "Listar (SystemAdmin)",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "skip",
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 1000000,
+              "default": 0
+            }
+          },
+          {
+            "in": "query",
+            "name": "take",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 25
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/App"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Entrada inválida"
+          },
+          "401": {
+            "description": "Credenciales inválidas"
+          },
+          "403": {
+            "description": "Requiere SystemAdmin"
+          },
+          "404": {
+            "description": "No encontrado"
+          },
+          "409": {
+            "description": "Conflicto o restricción"
+          },
+          "413": {
+            "description": "Cuerpo demasiado grande"
+          },
+          "429": {
+            "description": "Límite de peticiones"
+          },
+          "500": {
+            "description": "Error interno"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "apps"
+        ],
+        "summary": "Crear (SystemAdmin)",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AppInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/App"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Entrada inválida"
+          },
+          "401": {
+            "description": "Credenciales inválidas"
+          },
+          "403": {
+            "description": "Requiere SystemAdmin"
+          },
+          "404": {
+            "description": "No encontrado"
+          },
+          "409": {
+            "description": "Conflicto o restricción"
+          },
+          "413": {
+            "description": "Cuerpo demasiado grande"
+          },
+          "429": {
+            "description": "Límite de peticiones"
+          },
+          "500": {
+            "description": "Error interno"
+          }
+        }
+      }
+    },
+    "/api/v1/apps/{id}": {
+      "parameters": [
+        {
+          "in": "path",
+          "name": "id",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      ],
+      "get": {
+        "tags": [
+          "apps"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/App"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Entrada inválida"
+          },
+          "401": {
+            "description": "Credenciales inválidas"
+          },
+          "403": {
+            "description": "Requiere SystemAdmin"
+          },
+          "404": {
+            "description": "No encontrado"
+          },
+          "409": {
+            "description": "Conflicto o restricción"
+          },
+          "413": {
+            "description": "Cuerpo demasiado grande"
+          },
+          "429": {
+            "description": "Límite de peticiones"
+          },
+          "500": {
+            "description": "Error interno"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "apps"
+        ],
+        "description": "Envíe version del GET anterior. Actualización completa salvo Password/PasswordHash opcionales.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AppInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/App"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Entrada inválida"
+          },
+          "401": {
+            "description": "Credenciales inválidas"
+          },
+          "403": {
+            "description": "Requiere SystemAdmin"
+          },
+          "404": {
+            "description": "No encontrado"
+          },
+          "409": {
+            "description": "Conflicto o restricción"
+          },
+          "413": {
+            "description": "Cuerpo demasiado grande"
+          },
+          "429": {
+            "description": "Límite de peticiones"
+          },
+          "500": {
+            "description": "Error interno"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "apps"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "version",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Entrada inválida"
+          },
+          "401": {
+            "description": "Credenciales inválidas"
+          },
+          "403": {
+            "description": "Requiere SystemAdmin"
+          },
+          "404": {
+            "description": "No encontrado"
+          },
+          "409": {
+            "description": "Conflicto o restricción"
+          },
+          "413": {
+            "description": "Cuerpo demasiado grande"
+          },
+          "429": {
+            "description": "Límite de peticiones"
+          },
+          "500": {
+            "description": "Error interno"
+          }
+        }
+      }
+    },
+    "/api/v1/user-apps": {
+      "get": {
+        "tags": [
+          "user-apps"
+        ],
+        "summary": "Listar (SystemAdmin)",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "skip",
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 1000000,
+              "default": 0
+            }
+          },
+          {
+            "in": "query",
+            "name": "take",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 25
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/UserApp"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Entrada inválida"
+          },
+          "401": {
+            "description": "Credenciales inválidas"
+          },
+          "403": {
+            "description": "Requiere SystemAdmin"
+          },
+          "404": {
+            "description": "No encontrado"
+          },
+          "409": {
+            "description": "Conflicto o restricción"
+          },
+          "413": {
+            "description": "Cuerpo demasiado grande"
+          },
+          "429": {
+            "description": "Límite de peticiones"
+          },
+          "500": {
+            "description": "Error interno"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "user-apps"
+        ],
+        "summary": "Crear (SystemAdmin)",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserAppInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserApp"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Entrada inválida"
+          },
+          "401": {
+            "description": "Credenciales inválidas"
+          },
+          "403": {
+            "description": "Requiere SystemAdmin"
+          },
+          "404": {
+            "description": "No encontrado"
+          },
+          "409": {
+            "description": "Conflicto o restricción"
+          },
+          "413": {
+            "description": "Cuerpo demasiado grande"
+          },
+          "429": {
+            "description": "Límite de peticiones"
+          },
+          "500": {
+            "description": "Error interno"
+          }
+        }
+      }
+    },
+    "/api/v1/user-apps/{id}": {
+      "parameters": [
+        {
+          "in": "path",
+          "name": "id",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      ],
+      "get": {
+        "tags": [
+          "user-apps"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserApp"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Entrada inválida"
+          },
+          "401": {
+            "description": "Credenciales inválidas"
+          },
+          "403": {
+            "description": "Requiere SystemAdmin"
+          },
+          "404": {
+            "description": "No encontrado"
+          },
+          "409": {
+            "description": "Conflicto o restricción"
+          },
+          "413": {
+            "description": "Cuerpo demasiado grande"
+          },
+          "429": {
+            "description": "Límite de peticiones"
+          },
+          "500": {
+            "description": "Error interno"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "user-apps"
+        ],
+        "description": "Envíe version del GET anterior. Actualización completa salvo Password/PasswordHash opcionales.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserAppInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserApp"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Entrada inválida"
+          },
+          "401": {
+            "description": "Credenciales inválidas"
+          },
+          "403": {
+            "description": "Requiere SystemAdmin"
+          },
+          "404": {
+            "description": "No encontrado"
+          },
+          "409": {
+            "description": "Conflicto o restricción"
+          },
+          "413": {
+            "description": "Cuerpo demasiado grande"
+          },
+          "429": {
+            "description": "Límite de peticiones"
+          },
+          "500": {
+            "description": "Error interno"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "user-apps"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "version",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Entrada inválida"
+          },
+          "401": {
+            "description": "Credenciales inválidas"
+          },
+          "403": {
+            "description": "Requiere SystemAdmin"
+          },
+          "404": {
+            "description": "No encontrado"
+          },
+          "409": {
+            "description": "Conflicto o restricción"
+          },
+          "413": {
+            "description": "Cuerpo demasiado grande"
+          },
+          "429": {
+            "description": "Límite de peticiones"
+          },
+          "500": {
+            "description": "Error interno"
+          }
+        }
+      }
+    },
+    "/api/v1/auth/login": {
+      "post": {
+        "security": [
+          {
+            "ApiKey": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginResult"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Entrada inválida"
+          },
+          "401": {
+            "description": "Credenciales inválidas"
+          },
+          "403": {
+            "description": "Requiere SystemAdmin"
+          },
+          "404": {
+            "description": "No encontrado"
+          },
+          "409": {
+            "description": "Conflicto o restricción"
+          },
+          "413": {
+            "description": "Cuerpo demasiado grande"
+          },
+          "429": {
+            "description": "Límite de peticiones"
+          },
+          "500": {
+            "description": "Error interno"
+          }
+        }
+      }
+    },
+    "/api/v1/auth/me": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Usuario, rol y aplicación de la sesión"
+          },
+          "401": {
+            "description": "Sesión inválida"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApiKey": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-Api-Key"
+      },
+      "Bearer": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    },
+    "schemas": {
+      "RoleInput": {
+        "type": "object",
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 80
+          },
+          "version": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "AppInput": {
+        "type": "object",
+        "required": [
+          "name",
+          "code"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 100
+          },
+          "code": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9._-]+$",
+            "minLength": 2,
+            "maxLength": 60
+          },
+          "isActive": {
+            "type": "boolean",
+            "default": true
+          },
+          "version": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "UserInput": {
+        "type": "object",
+        "required": [
+          "userName",
+          "roleId"
+        ],
+        "description": "POST requiere Password o PasswordHash; PUT puede omitir ambos. Solo SystemAdmin. version obligatoria en PUT.",
+        "properties": {
+          "userName": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 80,
+            "pattern": "^[A-Za-z0-9._@-]+$"
+          },
+          "password": {
+            "type": "string",
+            "minLength": 12,
+            "maxLength": 128,
+            "writeOnly": true
+          },
+          "passwordHash": {
+            "type": "string",
+            "maxLength": 512,
+            "writeOnly": true
+          },
+          "roleId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "isActive": {
+            "type": "boolean",
+            "default": true
+          },
+          "version": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "UserAppInput": {
+        "type": "object",
+        "required": [
+          "userId",
+          "appId"
+        ],
+        "properties": {
+          "userId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "appId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "version": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "LoginInput": {
+        "type": "object",
+        "required": [
+          "userName",
+          "password",
+          "appId"
+        ],
+        "properties": {
+          "userName": {
+            "type": "string",
+            "maxLength": 80
+          },
+          "password": {
+            "type": "string",
+            "maxLength": 128,
+            "writeOnly": true
+          },
+          "appId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "LoginResult": {
+        "type": "object",
+        "properties": {
+          "accessToken": {
+            "type": "string"
+          },
+          "tokenType": {
+            "type": "string",
+            "example": "Bearer"
+          },
+          "expiresAtUtc": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string"
+          },
+          "correlationId": {
+            "type": "string"
+          }
+        }
+      },
+      "Role": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "version": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string"
+          },
+          "normalizedName": {
+            "type": "string"
+          }
+        }
+      },
+      "App": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "version": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "isActive": {
+            "type": "boolean"
+          }
+        }
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "version": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "userName": {
+            "type": "string"
+          },
+          "roleId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "isActive": {
+            "type": "boolean"
+          }
+        }
+      },
+      "UserApp": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "version": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "userId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "appId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      }
+    }
+  }
+}

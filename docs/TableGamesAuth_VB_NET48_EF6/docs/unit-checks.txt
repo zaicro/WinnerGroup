@@ -1,0 +1,47 @@
+ 
+PASS: log4net captures Info, Warn, Error
+PASS: Provider error messages are redacted
+PASS: Logger preserves exception type
+PASS: Random salt
+PASS: Correct password
+PASS: Wrong password
+PASS: Untrusted work factor rejected
+PASS: Legacy/unrecognized imports rejected
+PASS: HTTP 400
+PASS: Successful login commits
+PASS: JWT bound to application
+PASS: Current role authorized
+PASS: Role changes use database state
+PASS: Disabled user revokes JWT
+PASS: Password security stamp revokes JWT
+PASS: Grant deletion revokes JWT
+PASS: App disable revokes JWT
+PASS: Cross-application JWT rejected
+PASS: Malformed/tampered token rejected
+PASS: Malformed/tampered token rejected
+PASS: Reject wrong-issuer
+PASS: Reject wrong-audience
+PASS: Reject expired
+PASS: Reject HS512
+PASS: HTTP 401
+PASS: Failed login count committed
+PASS: HTTP 401
+PASS: Failed login count committed
+PASS: HTTP 401
+PASS: Failed login count committed
+PASS: HTTP 401
+PASS: Failed login count committed
+PASS: HTTP 401
+PASS: Failed login count committed
+PASS: Five failures lock account
+PASS: HTTP 401
+PASS: Successful login resets expired lock
+PASS: HTTP 401
+PASS: HTTP 409
+PASS: Concurrency failure rolls transaction back
+PASS: HTTP 400
+PASS: HTTP 409
+PASS: Public user DTO excludes hash
+PASS: HTTP 409
+PASS: Save exception rolls back transaction
+45 checks passed.
