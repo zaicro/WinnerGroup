@@ -1,0 +1,14 @@
+https://dev.azure.com/newshore-core/
+https://dev.azure.com/newshore-product/
+https://dev.azure.com/newshore-teams/
+https://dev.azure.com/newshore-dmt/
+https://dev.azure.com/newshore-booking/
+https://dev.azure.com/newshore-booking-newshore/
+https://dev.azure.com/newshore-toolbox/
+https://dev.azure.com/newshore-booking-hkexpress/
+https://dev.azure.com/newshore-booking-cyprus/
+https://dev.azure.com/newshore-booking-flyarystan/
+https://dev.azure.com/newshore-booking-flyone/
+https://dev.azure.com/newshore-booking-jambojet/
+https://dev.azure.com/newshore-booking-jsx/
+https://dev.azure.com/newshore-booking-plusultra/
