@@ -1,0 +1,11 @@
+.vs/
+**/bin/
+**/obj/
+*.user
+*.suo
+*.pfx
+*.p12
+*.secret.xml
+*.tmp
+LocalSecrets.config
+ConnectionStrings.config

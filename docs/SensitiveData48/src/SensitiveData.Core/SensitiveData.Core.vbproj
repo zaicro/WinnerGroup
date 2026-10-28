@@ -1,0 +1,43 @@
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition="'$(Configuration)' == ''">Debug</Configuration>
+    <Platform Condition="'$(Platform)' == ''">AnyCPU</Platform>
+    <ProjectGuid>{8A2B2B23-25C6-4E66-A3BB-AE50F7FCE301}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>SensitiveData48.Core</RootNamespace>
+    <AssemblyName>SensitiveData.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <MyType>Empty</MyType>
+    <OptionStrict>On</OptionStrict><OptionExplicit>On</OptionExplicit><OptionInfer>On</OptionInfer>
+    <LangVersion>latest</LangVersion>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <OutputPath>bin\Debug\</OutputPath><DebugSymbols>true</DebugSymbols><DebugType>full</DebugType><DefineDebug>true</DefineDebug>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <OutputPath>bin\Release\</OutputPath><Optimize>true</Optimize><DebugType>pdbonly</DebugType>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" /><Reference Include="System.Core" /><Reference Include="System.Configuration" />
+    <Reference Include="System.Security" /><Reference Include="System.Data" /><Reference Include="System.Xml" /><Reference Include="System.Xml.Linq" />
+    <Import Include="System" /><Import Include="System.Collections.Generic" /><Import Include="System.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CryptoUtilities.vb" />
+    <Compile Include="DatabaseConnectionFactory.vb" />
+    <Compile Include="DpapiSecretStore.vb" />
+    <Compile Include="HmacService.vb" />
+    <Compile Include="JwtTokenService.vb" />
+    <Compile Include="SecretStores.vb" />
+
+  </ItemGroup>
+  <ItemGroup>
+
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.23.0" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+</Project>
