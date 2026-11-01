@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>Cirsa.TableGames.Identity.DataAccess.Sql</RootNamespace>
+    <AssemblyName>Cirsa.TableGames.Identity.DataAccess.Sql</AssemblyName>
+    <TargetFramework>net48</TargetFramework>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <Company>Cirsa</Company>
+    <Product>Cirsa.TableGames.Identity</Product>
+    <Description>SQL Server database migrations for table game identity management.</Description>
+    <Version>0.1.0</Version>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionStrict>On</OptionStrict>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Migrations\Identity\*.resx">
+      <LogicalName>$(RootNamespace).Migrations.Identity.$([System.Text.RegularExpressions.Regex]::Replace('%(Filename)', '^\d+_', '')).resources</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="EntityFramework" Version="6.5.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Cirsa.TableGames.Identity.DataAccess\Cirsa.TableGames.Identity.DataAccess.vbproj" />
+  </ItemGroup>
+
+</Project>
