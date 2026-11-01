@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>Cirsa.TableGames.Identity.Domain</RootNamespace>
+    <AssemblyName>Cirsa.TableGames.Identity.Domain</AssemblyName>
+    <TargetFramework>net48</TargetFramework>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <Company>Cirsa</Company>
+    <Product>Cirsa.TableGames.Identity</Product>
+    <Description>Domain entities and business rules for identity management in table game applications.</Description>
+    <Version>0.1.0</Version>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionStrict>On</OptionStrict>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+</Project>

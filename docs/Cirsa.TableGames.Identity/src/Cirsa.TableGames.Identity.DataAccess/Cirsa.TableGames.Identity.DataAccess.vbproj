@@ -16,6 +16,11 @@
 
   <ItemGroup>
     <PackageReference Include="EntityFramework" Version="6.5.2" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Cirsa.TableGames.Identity.Domain\Cirsa.TableGames.Identity.Domain.vbproj" />
   </ItemGroup>
 
 </Project>
