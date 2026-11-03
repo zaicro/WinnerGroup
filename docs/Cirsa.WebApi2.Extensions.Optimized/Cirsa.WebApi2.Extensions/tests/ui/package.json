@@ -1,0 +1,6 @@
+{
+  "name": "cirsa-webapi2-swagger-ui-tests",
+  "private": true,
+  "scripts": { "test": "node authorization.test.cjs" },
+  "devDependencies": { "jsdom": "26.1.0" }
+}

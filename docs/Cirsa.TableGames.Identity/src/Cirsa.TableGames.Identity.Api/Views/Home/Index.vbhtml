@@ -21,6 +21,6 @@
             <h2 id="hostingTitle">Web Hosting</h2>
             <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
             <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301872">Learn more &raquo;</a></p>
-        </section>>
+        </section>
     </div>
 </main>

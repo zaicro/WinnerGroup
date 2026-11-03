@@ -1,0 +1,23 @@
+$identitySecretBytes = New-Object byte[] 32
+$identityRandom = [System.Security.Cryptography.RandomNumberGenerator]::Create()
+$identityRandom.GetBytes($identitySecretBytes)
+[Convert]::ToBase64String($identitySecretBytes)
+$identityRandom.Dispose()
+
+
+
+<Authorize(AuthenticationSchemes:="ApiKey")>
+<Authorize(AuthenticationSchemes:="Bearer")>
+' Accept either valid credential.
+<Authorize(AuthenticationSchemes:="ApiKey,Bearer")>
+' Require both valid credentials.
+<Authorize(AuthenticationSchemes:="ApiKey,Bearer", RequireAllSchemes:=True)>
+
+AllowAnonymous
+
+
+
+
+
+
+http://localhost:56949/swagger/ui/index#!/Authentication/Authentication_Authenticate
